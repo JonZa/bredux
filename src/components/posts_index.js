@@ -26,29 +26,32 @@ class PostsIndex extends Component {
 	componentDidUpdate() {
 		console.log('PostsIndex componentDidUpdate')
 		if (!this.state.totalBrekkies) {
-			// this.state.totalBrekkies = this.props.posts[0].caption.text.split(' #')[1].split(' ')[0];
-			this.state.totalBrekkies = 10;
+			this.state.totalBrekkies = this.props.posts[0].caption.text.split(' #')[1].split(' ')[0];
+			// this.state.totalBrekkies = 13;
 		}
 		if (this.state.totalBrekkies > this.props.posts.length) {
 			this.props.fetchPosts();
 		} else if (!this.state.sorting) {
 			this.state.sorting = 'score';
 			this.props.sortPosts(this.state.sorting);
+			this.wiggle();
 			myLazyLoad.update()
 		}
 	}
+	wiggle() {
+		console.log('PostsIndex wiggle')
+		if (!window.scrollY) {
+			window.scrollTo(0, 1);
+		}
+		window.scrollTo(0, 0);
+	}
 	renderNav() {
 		console.log('PostsIndex renderNav')
-		var dateLink = <Link to="#" onClick={ this.sortClick.bind(this) }>date</Link>;
-		if (this.state.sorting === 'date') {
-			dateLink = <span className="inactive">date</span>;
-		}
-		var scoreLink = <Link to="#" onClick={ this.sortClick.bind(this) }>score</Link>;
-		if (this.state.sorting === 'score') {
-			scoreLink = <span className="inactive">score</span>;
-		}
+		var dateLink = (this.state.sorting !== 'date' ? <Link to="#" onClick={ this.sortClick.bind(this) }>date</Link> : dateLink = <span className="inactive">date</span>);
+		var scoreLink = (this.state.sorting !== 'score' ? <Link to="#" onClick={ this.sortClick.bind(this) }>score</Link> : scoreLink = <span className="inactive">score</span>);
+		var navClass = (!this.state.sorting ? 'loading' : '') 
 		return(
-			<nav>
+			<nav className={ navClass }>
 				sorting:
 				{ scoreLink }
 				{ dateLink }
@@ -85,10 +88,7 @@ class PostsIndex extends Component {
 		console.log('PostsIndex sortClick')
 		this.props.sortPosts(event.currentTarget.textContent);
 		this.state.sorting = event.currentTarget.textContent;
-		if (!window.scrollY) {
-			window.scrollTo(0, 1);
-		}
-		window.scrollTo(0, 0);
+		this.wiggle();
 	}
 	renderPosts() {
 		console.log('PostsIndex renderPosts')
@@ -114,7 +114,7 @@ class PostsIndex extends Component {
 		const isLoading = !this.state.totalBrekkies || this.state.totalBrekkies > _.keysIn(this.props.posts).length;
 		return(
 			<div>
-				{ (!isLoading ? this.renderNav() : '') }
+				{ this.renderNav() }
 				<div id="boxes">
 					{ (isLoading ? this.renderBrekkie() : '') }
 					{ this.renderPosts() }

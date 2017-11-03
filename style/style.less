@@ -121,13 +121,17 @@ nav {
 	z-index: 2;
 	top: 47px;
 	width: 100%;
+	transition: opacity 0.25s ease-out;
 	a,
-	span {
+	.inactive {
 		margin-left: 10px;
 	}
 	.inactive {
 		text-decoration: underline;
 		opacity: 0.75;
+	}
+	&.loading {
+		opacity: 0.5;
 	}
 }
 #boxes {
