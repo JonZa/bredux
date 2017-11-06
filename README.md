@@ -11,6 +11,7 @@
 * [Webpack](https://webpack.js.org/)
 * [LazyLoad](http://www.andreaverlicchi.eu/lazyload/)
 * [Instagram](https://www.instagram.com/developer/)
+* [BEM](https://en.bem.info/)
 
 ## Things:
 

@@ -7,7 +7,7 @@ export const SORT_POSTS = 'sort_posts';
 var IG_FEED = 'https://api.instagram.com/v1/users/30926429/media/recent?access_token=30926429.1677ed0.a057e3c9af9041ee8e24e07cf9cf2aad';
 
 export function fetchPosts() {
-	console.log('actions fetchPosts')
+	// console.log('actions fetchPosts')
 	const request = fetchJsonp(
 		IG_FEED
 	).then(
@@ -27,7 +27,7 @@ export function fetchPosts() {
 }
 
 export function sortPosts(criteria) {
-	console.log('actions sortPosts')
+	// console.log('actions sortPosts')
 	return {
 		type: SORT_POSTS,
 		criteria: criteria

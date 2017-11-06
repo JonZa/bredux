@@ -4,7 +4,7 @@ import { FETCH_POSTS, FETCH_POST, SORT_POSTS } from '../actions';
 export default function(state = [], action) {
 	switch (action.type) {
 		case FETCH_POSTS:
-			console.log('reducer FETCH_POSTS')
+			// console.log('reducer FETCH_POSTS')
 			let filtered = _.filter(
 				action.payload.data,
 				function(el) {
@@ -13,7 +13,7 @@ export default function(state = [], action) {
 			);
 			return state.concat(filtered);
 		case SORT_POSTS:
-			console.log('reducer SORT_POSTS')
+			// console.log('reducer SORT_POSTS')
 			let sorted = _.sortBy(
 				state,
 				function(el) {
