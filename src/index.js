@@ -15,14 +15,14 @@ ReactDOM.render(
 	<Provider store={createStoreWithMiddleware(reducers)}>
 		<BrowserRouter>
 			<div>
-				<header>
-					<h1>
+				<div className="header">
+					<h1 className="header__headline header__headline--hashtag">
 						brekkieroll
 					</h1>
-					<a href="https://github.com/JonZa/bredux" className="github" target="_blank">
+					<a href="https://github.com/JonZa/bredux" className="header__link header__link--github" target="_blank">
 						Source
 					</a>
-				</header>
+				</div>
 				<Switch>
 					<Route path="/posts/:id" component={ PostsShow } />
 					<Route path="/" component={ PostsIndex } />

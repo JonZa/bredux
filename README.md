@@ -6,6 +6,8 @@
 
 ## Stuff:
 
+Mostly massive overkill, but good practice:
+
 * [React](https://reactjs.org/)
 * [Redux](http://redux.js.org/)
 * [Webpack](https://webpack.js.org/)
@@ -15,4 +17,4 @@
 
 ## Things:
 
-* With apologies to [Stephen Girder](http://github.com/stephengrider/) for butchering his [Modern React with Redux course](https://www.udemy.com/react-redux/learn/v4/overview/).
+* With apologies to [Stephen Girder](http://github.com/stephengrider/) for butchering his excellent [Modern React with Redux course](https://www.udemy.com/react-redux/learn/v4/overview/).

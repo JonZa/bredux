@@ -26,7 +26,7 @@ class PostsIndex extends Component {
 		// console.log('PostsIndex componentDidUpdate')
 		if (!this.state.totalBrekkies) {
 			this.state.totalBrekkies = this.props.posts[0].caption.text.split(' #')[1].split(' ')[0];
-			// this.state.totalBrekkies = 9;
+			// this.state.totalBrekkies = 7;
 		}
 		if (this.state.totalBrekkies > this.props.posts.length) {
 			this.props.fetchPosts();
@@ -46,15 +46,15 @@ class PostsIndex extends Component {
 	}
 	renderNav() {
 		// console.log('PostsIndex renderNav')
-		var navClass = (!this.state.sorting ? 'loading' : '') 
-		var dateLink = (this.state.sorting === 'score' ? <Link to="#" onClick={ this.sortClick.bind(this) }>date</Link> : <span className="inactive">date</span>);
-		var scoreLink = (this.state.sorting === 'date' ? <Link to="#" onClick={ this.sortClick.bind(this) }>score</Link> : <span className="inactive">score</span>);
+		var sortDivClass = 'rolls-sorting' + (!this.state.sorting ? ' rolls-sorting--loading' : '') 
+		var dateLink = (this.state.sorting === 'score' ? <Link className="rolls-sorting__link" to="#" onClick={ this.sortClick.bind(this) }>date</Link> : <span className="rolls-sorting__text">date</span>);
+		var scoreLink = (this.state.sorting === 'date' ? <Link className="rolls-sorting__link" to="#" onClick={ this.sortClick.bind(this) }>score</Link> : <span className="rolls-sorting__text">score</span>);
 		return(
-			<nav className={ navClass }>
+			<div className={ sortDivClass }>
 				sorting:
 				{ scoreLink }
 				{ dateLink }
-			</nav>
+			</div>
 		);
 	}
 	renderBrekkie() {
